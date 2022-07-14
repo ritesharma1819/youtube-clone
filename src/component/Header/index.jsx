@@ -1,11 +1,9 @@
-import { Box } from '@mui/material'
-import React from 'react'
-
+import { Box } from "@mui/material";
+import React from "react";
+import style from "./style";
 
 const Header = () => {
-  return (
-    <Box>Header</Box>
-  )
-}
+  return <Box sx={style.header}>Header</Box>;
+};
 
-export default Header
+export default Header;

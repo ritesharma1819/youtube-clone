@@ -7,7 +7,7 @@ import style from "./style";
 
 const HomeScreen = () => {
   return (
-    <Box sx={style.container}>
+    <Box sx={style.container.primary}>
       <Header />
       <Box sx={style.sidebar_video_container}>
         <SideBar />

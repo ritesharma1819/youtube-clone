@@ -1,10 +1,9 @@
-import { Box } from '@mui/system'
-import React from 'react'
+import { Box } from "@mui/system";
+import React from "react";
+import style from "./style";
 
 const SideBar = () => {
-  return (
-    <Box>SideBar</Box>
-  )
-}
+  return <Box sx={style.sideBar}>SideBar</Box>;
+};
 
-export default SideBar
+export default SideBar;
