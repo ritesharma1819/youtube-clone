@@ -1,9 +1,13 @@
-import React from 'react'
+import { Box } from "@mui/material";
+import React from "react";
+import HomeScreen from "./HomeScreen";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <Box>
+      <HomeScreen />
+    </Box>
+  );
+};
 
-export default App
+export default App;
