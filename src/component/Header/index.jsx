@@ -5,7 +5,7 @@ import style from "./style";
 import youtubeLogo from "../../static/logo.png";
 import { Notifications, Apps, Search } from "@mui/icons-material";
 
-const Header = (props) => {
+const Header = () => {
   return (
     <Box sx={style.header}>
       <Box sx={style.header_container}>
@@ -22,7 +22,7 @@ const Header = (props) => {
             sx={style.header_textField}
             placeholder="Search..."
           />
-          <Button>
+          <Button sx={style.header_button}>
             <Search />
           </Button>
         </Box>

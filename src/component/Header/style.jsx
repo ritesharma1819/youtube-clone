@@ -20,14 +20,17 @@ const style = {
   header_textField: {
     backgroundColor: "#191919",
     width: "80%",
-    textColor: "white",
     color: "#ffffff",
     height: "35px",
+  },
+  header_button: {
+    backgroundColor: "hsla(0, 0%, 100%, 0.08)",
   },
   header_icons: {
     display: "flex",
     alignItems: "center",
     gap: "30px",
+    cursor: "pointer",
   },
   header_avatar: {
     width: "28px",
