@@ -1,9 +1,9 @@
-import { Box, Avatar, TextField, Button } from "@mui/material";
+import { Apps, Notifications, Search } from "@mui/icons-material";
+import { Avatar, Box, Button, TextField } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import style from "./style";
 import youtubeLogo from "../../static/logo.png";
-import { Notifications, Apps, Search } from "@mui/icons-material";
+import style from "./style";
 
 const Header = () => {
   return (

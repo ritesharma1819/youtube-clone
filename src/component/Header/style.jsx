@@ -15,16 +15,20 @@ const style = {
   },
   header_textField_container: {
     width: "40%",
+    display: "flex",
+    alignItems: "center",
     color: "white",
   },
   header_textField: {
     backgroundColor: "#191919",
-    width: "80%",
-    color: "#ffffff",
+    color: "white",
     height: "35px",
+    flex: 3,
   },
   header_button: {
     backgroundColor: "hsla(0, 0%, 100%, 0.08)",
+    flex: 0.2,
+    color: "white",
   },
   header_icons: {
     display: "flex",
