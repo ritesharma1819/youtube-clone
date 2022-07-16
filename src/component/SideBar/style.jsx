@@ -4,6 +4,11 @@ const style = {
     flex: 0.6,
     height: "100vh",
     padding: "10px",
+    display: {
+      xs: 'none',
+      sm: 'block'
+    },
+   
   },
   sideBar_icons: {
     color: "white",

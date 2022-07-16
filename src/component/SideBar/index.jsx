@@ -1,5 +1,10 @@
 import {
-  History, Home, LibraryBooks, Logout, SentimentVeryDissatisfied, Subscriptions,
+  History,
+  Home,
+  LibraryBooks,
+  Logout,
+  SentimentVeryDissatisfied,
+  Subscriptions,
   ThumbUp
 } from "@mui/icons-material";
 import {
@@ -12,6 +17,7 @@ import {
 import { Box } from "@mui/system";
 import React from "react";
 import style from "./style";
+
 const SideBar = () => {
   return (
     <Box sx={style.sideBar}>
@@ -54,7 +60,7 @@ const SideBar = () => {
               <ListItemIcon sx={style.sideBar_icons}>
                 <LibraryBooks />
               </ListItemIcon>
-              <ListItemText primary="Populate" />
+              <ListItemText primary="Popular" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>

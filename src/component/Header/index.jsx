@@ -9,14 +9,7 @@ const Header = () => {
   return (
     <Box sx={style.header}>
       <Box sx={style.header_container}>
-        <Box
-          sx={{
-            display: {
-              xs: "none",
-              sm: "block",
-            },
-          }}
-        >
+        <Box sx={style.header_image}>
           <Image
             src={youtubeLogo}
             alt="logo"
@@ -25,50 +18,18 @@ const Header = () => {
             style={{ cursor: "pointer" }}
           />
         </Box>
-        <Menu
-          sx={{
-            display: {
-              xs: "block",
-              sm: "none",
-            },
-
-            height: "50px",
-          }}
-        />
-        <Box
-          sx={{
-            ...style.header_textField_container,
-            width: {
-              xs: "70%",
-              sm: "40%",
-              md: "40%",
-            },
-          }}
-        >
+        <Menu sx={style.header_menuIcon} />
+        <Box sx={style.header_textField_container}>
           <TextField
             variant="standard"
-            sx={{
-              ...style.header_textField,
-              width: {
-                xs: "600px",
-                sm: "600px",
-              },
-            }}
+            sx={style.header_textField}
             placeholder="  Search..."
           />
           <Button sx={style.header_button}>
             <Search />
           </Button>
         </Box>
-        <Box
-          sx={{
-            ...style.header_icons,
-            display: {
-              xs: "none",
-              sm: "flex",
-            },
-          }}
-        >
+        <Box sx={style.header_icons}>
           <Notifications />
           <Apps />
           <Avatar
