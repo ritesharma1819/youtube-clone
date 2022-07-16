@@ -1,8 +1,14 @@
 const style = {
   container: {
-    backgroundColor: "#ffb3ba",
+    backgroundColor: "black",
     flex: 3,
-    height: "100vh",
+    height: "100%",
+  },
+  grid_container: {
+    margin: {
+      md: "20px 50px 0 20px",
+      xs: "20px 20px",
+    },
   },
 };
 
