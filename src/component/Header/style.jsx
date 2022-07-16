@@ -1,12 +1,8 @@
 const style = {
   header: {
-    // backgroundColor: "red",
     height: "55px",
     marginLeft: "30px",
     marginRight: "30px",
-    Image: {
-      cursor: "pointer",
-    },
   },
   header_container: {
     display: "flex",
@@ -14,7 +10,6 @@ const style = {
     alignItems: "center",
   },
   header_textField_container: {
-    width: "40%",
     display: "flex",
     alignItems: "center",
     color: "white",
@@ -23,7 +18,9 @@ const style = {
     backgroundColor: "#191919",
     color: "white",
     height: "35px",
-    flex: 3,
+    "& input": {
+      color: "white",
+    },
   },
   header_button: {
     backgroundColor: "hsla(0, 0%, 100%, 0.08)",
