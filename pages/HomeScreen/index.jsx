@@ -1,16 +1,24 @@
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../src/component/Header";
 import SideBar from "../../src/component/SideBar";
 import Videos from "../../src/component/Videos";
 import style from "./style";
 
 const HomeScreen = () => {
+  const [toggleSideBar, setToggleSideBar] = useState(false);
+
+  const handleToogleSideBar = () => {
+    setToggleSideBar((value) => !value);
+  };
   return (
     <Box sx={style.container.primary}>
-      <Header />
+      <Header handleToogleSideBar={handleToogleSideBar} />
       <Box sx={style.sidebar_video_container}>
-        <SideBar />
+        <SideBar
+          toggleSideBar={toggleSideBar}
+          handleToogleSideBar={handleToogleSideBar}
+        />
         <Videos />
       </Box>
     </Box>

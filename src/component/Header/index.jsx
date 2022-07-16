@@ -5,7 +5,7 @@ import React from "react";
 import youtubeLogo from "../../static/logo.png";
 import style from "./style";
 
-const Header = () => {
+const Header = ({ handleToogleSideBar }) => {
   return (
     <Box sx={style.header}>
       <Box sx={style.header_container}>
@@ -18,7 +18,10 @@ const Header = () => {
             style={{ cursor: "pointer" }}
           />
         </Box>
-        <Menu sx={style.header_menuIcon} />
+        <Menu
+          sx={style.header_menuIcon}
+          onClick={() => handleToogleSideBar()}
+        />
         <Box sx={style.header_textField_container}>
           <TextField
             variant="standard"

@@ -5,26 +5,29 @@ import {
   Logout,
   SentimentVeryDissatisfied,
   Subscriptions,
-  ThumbUp
+  ThumbUp,
 } from "@mui/icons-material";
 import {
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText
+  ListItemText,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import style from "./style";
 
-const SideBar = () => {
+const SideBar = ({ toggleSideBar, handleToogleSideBar }) => {
   return (
-    <Box sx={style.sideBar}>
-      <nav aria-label="main mailbox folders">
+    <Box sx={toggleSideBar ? style.sideBar_open : style.sideBar}>
+      <nav
+        aria-label="main mailbox folders"
+        onClick={() => handleToogleSideBar()}
+      >
         <List>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={style.sideBar_listItemButton}>
               <ListItemIcon sx={style.sideBar_icons}>
                 <Home />
               </ListItemIcon>
@@ -32,7 +35,7 @@ const SideBar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={style.sideBar_listItemButton}>
               <ListItemIcon sx={style.sideBar_icons}>
                 <Subscriptions />
               </ListItemIcon>
@@ -40,7 +43,7 @@ const SideBar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={style.sideBar_listItemButton}>
               <ListItemIcon sx={style.sideBar_icons}>
                 <ThumbUp />
               </ListItemIcon>
@@ -48,7 +51,7 @@ const SideBar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={style.sideBar_listItemButton}>
               <ListItemIcon sx={style.sideBar_icons}>
                 <History />
               </ListItemIcon>
@@ -56,7 +59,7 @@ const SideBar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={style.sideBar_listItemButton}>
               <ListItemIcon sx={style.sideBar_icons}>
                 <LibraryBooks />
               </ListItemIcon>
@@ -64,7 +67,7 @@ const SideBar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={style.sideBar_listItemButton}>
               <ListItemIcon sx={style.sideBar_icons}>
                 <SentimentVeryDissatisfied />
               </ListItemIcon>
@@ -72,7 +75,7 @@ const SideBar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding sx={style.sideBar_logout_icon}>
-            <ListItemButton>
+            <ListItemButton sx={style.sideBar_listItemButton}>
               <ListItemIcon sx={style.sideBar_icons}>
                 <Logout />
               </ListItemIcon>

@@ -21,6 +21,7 @@ const style = {
       sm: "none",
     },
     height: "50px",
+    cursor: "pointer",
   },
   header_textField_container: {
     display: "flex",
