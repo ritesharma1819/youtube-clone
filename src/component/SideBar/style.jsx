@@ -24,7 +24,7 @@ const style = {
     },
     width: {
       xs: "100px"
-    }
+    },
   },
   sideBar_listItemButton: {
     "&:hover": {

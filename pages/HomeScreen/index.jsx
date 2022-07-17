@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import Header from "../../src/component/Header";
 import SideBar from "../../src/component/SideBar";
-import Videos from "../../src/component/Videos";
+import Feed from "../../src/component/Feed";
 import style from "./style";
 
 const HomeScreen = () => {
@@ -19,7 +19,7 @@ const HomeScreen = () => {
           toggleSideBar={toggleSideBar}
           handleToogleSideBar={handleToogleSideBar}
         />
-        <Videos />
+        <Feed />
       </Box>
     </Box>
   );

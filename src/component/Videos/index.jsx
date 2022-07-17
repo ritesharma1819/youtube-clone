@@ -1,30 +1,33 @@
-import { Grid, Paper, styled } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Typography } from "@mui/material";
 import React from "react";
+import Image from "next/image";
+import poster from "../../static/poster.jpg";
 import style from "./style";
-
+import { Visibility } from "@mui/icons-material";
 const Videos = () => {
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#323232" : "red",
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: "white",
-  }));
   return (
-    <Box sx={style.container}>
-      <Box sx={style.grid_container}>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ lg: 16, md: 12, sm: 8, xs: 1 }}
-        >
-          {Array.from(Array(60)).map((_, index) => (
-            <Grid item xs={2} sm={4} md={4} key={index}>
-              <Item>video</Item>
-            </Grid>
-          ))}
-        </Grid>
+    <Box sx={style.video_container}>
+      <Box sx={style.video_poster}>
+        <Image src={poster} alt="thumnail" width="100%" height="100%" />
+        <Typography sx={style.video_duration}>5:30</Typography>
+      </Box>
+      <Typography sx={style.video_title}>
+        Learn React with in 1.3 light year days
+      </Typography>
+      <Box sx={style.views_details}>
+        <Visibility />
+        <Typography>5M views •</Typography>
+        <Typography>5 days ago</Typography>
+      </Box>
+      <Box sx={style.channel_details}>
+        <Image
+          src={poster}
+          alt="channel"
+          width="30px"
+          height="30px"
+          style={{ borderRadius: "50%" }}
+        />
+        <Typography>channel name</Typography>
       </Box>
     </Box>
   );
