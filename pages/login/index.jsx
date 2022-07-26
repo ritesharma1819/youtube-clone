@@ -3,8 +3,15 @@ import React from "react";
 import style from "./style";
 import Image from "next/image";
 import youtubelogo from "../../src/static/logo.png";
+import { useDispatch } from "react-redux";
+import login from "../../src/redux/action/auth_action";
 
-const login = () => {
+const Login = () => {
+  const dispatch = useDispatch();
+
+  const handleLogIn = () => {
+    dispatch(login());
+  };
   return (
     <Box sx={style.login_container}>
       <Box sx={style.login_items}>
@@ -12,10 +19,12 @@ const login = () => {
           YouTube-Clone
         </Typography>
         <Image src={youtubelogo} alt="logo" width="100px" height="100px" />
-        <Button sx={style.login_button}>LogIn With Google</Button>
+        <Button onClick={handleLogIn} sx={style.login_button}>
+          LogIn With Google
+        </Button>
       </Box>
     </Box>
   );
 };
 
-export default login;
+export default Login;
