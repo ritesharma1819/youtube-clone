@@ -5,20 +5,30 @@ import {
   Logout,
   SentimentVeryDissatisfied,
   Subscriptions,
-  ThumbUp,
+  ThumbUp
 } from "@mui/icons-material";
 import {
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText,
+  ListItemText
 } from "@mui/material";
 import { Box } from "@mui/system";
+import { useRouter } from "next/router";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/action/auth_action";
 import style from "./style";
 
 const SideBar = ({ toggleSideBar, handleToogleSideBar }) => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logout());
+    router.push("/login");
+  };
   return (
     <Box sx={toggleSideBar ? style.sideBar_open : style.sideBar}>
       <Box position="fixed">
@@ -90,7 +100,11 @@ const SideBar = ({ toggleSideBar, handleToogleSideBar }) => {
                 />
               </ListItemButton>
             </ListItem>
-            <ListItem disablePadding sx={style.sideBar_logout_icon}>
+            <ListItem
+              onClick={handleLogOut}
+              disablePadding
+              sx={style.sideBar_logout_icon}
+            >
               <ListItemButton sx={style.sideBar_listItemButton}>
                 <ListItemIcon sx={style.sideBar_icons}>
                   <Logout />

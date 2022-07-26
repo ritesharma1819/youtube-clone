@@ -1,17 +1,27 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
-import style from "./style";
 import Image from "next/image";
-import youtubelogo from "../../src/static/logo.png";
-import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import login from "../../src/redux/action/auth_action";
+import youtubelogo from "../../src/static/logo.png";
+import style from "./style";
 
 const Login = () => {
+  const { accessToken, loading } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleLogIn = () => {
     dispatch(login());
   };
+  useEffect(() => {
+    loading: true;
+    if (accessToken) {
+      router.push("/");
+    }
+    loading: false;
+  }, [accessToken, router]);
   return (
     <Box sx={style.login_container}>
       <Box sx={style.login_items}>
