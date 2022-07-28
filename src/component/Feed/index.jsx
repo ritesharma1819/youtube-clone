@@ -1,10 +1,16 @@
 import { Grid, Paper, styled } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./style";
 import Videos from '../Videos'
+import { useDispatch } from "react-redux";
+import { getPopularVideos } from "../../redux/action/videos_action";
 
 const Feed = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPopularVideos())
+  }, [dispatch]);
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#323232" : "#383434",
     ...theme.typography.body2,
