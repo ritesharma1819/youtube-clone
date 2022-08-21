@@ -1,6 +1,6 @@
 import request from "../../utils/api";
 
-export const getPopularVideos = () => async (dispatch) => {
+export const getPopularVideos = () => async (dispatch,getState) => {
   try {
     const { data } = await request("/videos", {
       params: {
@@ -8,7 +8,7 @@ export const getPopularVideos = () => async (dispatch) => {
         chart: "mostPopular",
         regionCode: "US",
         maxResults: 30,
-        pageToken: "",
+        pageToken: getState().homeVideoReducer.nextPageToken,
       },
     });
     console.log(data);

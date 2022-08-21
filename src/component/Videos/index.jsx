@@ -3,16 +3,13 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import style from "./style";
 import { Visibility } from "@mui/icons-material";
-import { useState } from "react";
 import moment from "moment";
 import numeral from "numeral";
 const Videos = ({ video }) => {
-  const [channelIcon, setChannelIcon] = useState();
   const {
     id,
     snippet: {
       title,
-      channelId,
       channelTitle,
       publishedAt,
       thumbnails: { medium },

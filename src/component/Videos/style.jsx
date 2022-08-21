@@ -1,7 +1,7 @@
 const style = {
   video_container: {
     width: "100%",
-    height: "100%",
+    // height: "100%",
   },
   video_poster: {
     marginBottom: "0.5rem",

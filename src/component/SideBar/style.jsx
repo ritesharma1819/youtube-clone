@@ -11,7 +11,7 @@ const style = {
     width:{
       md: '250px',
       sm: '200px'
-    }
+    },
     
   },
   sideBar_open: {
