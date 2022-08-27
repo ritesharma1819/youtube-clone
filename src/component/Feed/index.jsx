@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import React, { useEffect } from "react";
 import style from "./style";
 import Videos from "../Videos";
+import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { getPopularVideos } from "../../redux/action/videos_action";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -10,6 +11,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const Feed = () => {
   const { videos } = useSelector((state) => state.homeVideoReducer);
   const dispatch = useDispatch();
+  const router = useRouter();
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#323232" : "#383434",
     ...theme.typography.body2,
@@ -17,6 +19,9 @@ const Feed = () => {
     textAlign: "center",
     color: "white",
   }));
+  const handleWatchScreen=()=>{
+    router.push("/watchScreen")
+  }
   useEffect(() => {
     dispatch(getPopularVideos());
   }, [dispatch]);
@@ -36,7 +41,7 @@ const Feed = () => {
         >
           {videos.map((video, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
-              <Item sx={style.grid_item}>
+              <Item sx={style.grid_item} onClick={()=>handleWatchScreen()}>
                 <Videos video={video} id={video.id} />
               </Item>
             </Grid>

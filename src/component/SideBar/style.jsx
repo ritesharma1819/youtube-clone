@@ -42,7 +42,8 @@ const style = {
   },
   sideBar_logout_icon: {
     marginTop: "20px",
-    border: "1px solid #808080",
+    borderTop: "1px solid #808080",
+    borderBottom: "1px solid #808080",
     width: "100%",
   },
 };

@@ -5,7 +5,7 @@ const style = {
     // height: "100%",
     position:'relative',
     maxHeight: '675px',
-    overflow:'scroll',
+    overflowY:'scroll',
   },
  
   grid_container: {
