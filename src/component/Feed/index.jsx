@@ -5,7 +5,10 @@ import style from "./style";
 import Videos from "../Videos";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { getPopularVideos } from "../../redux/action/videos_action";
+import {
+  getPopularVideos,
+  getVideoById,
+} from "../../redux/action/videos_action";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const Feed = () => {
@@ -19,9 +22,11 @@ const Feed = () => {
     textAlign: "center",
     color: "white",
   }));
-  const handleWatchScreen=()=>{
-    router.push("/watchScreen")
-  }
+  const handleWatchScreen = (video_id) => {
+    console.log("video_id==========", video_id);
+    router.push("/watchScreen");
+    dispatch(getVideoById(video_id));
+  };
   useEffect(() => {
     dispatch(getPopularVideos());
   }, [dispatch]);
@@ -41,13 +46,16 @@ const Feed = () => {
         >
           {videos.map((video, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
-              <Item sx={style.grid_item} onClick={()=>handleWatchScreen()}>
+              <Item
+                sx={style.grid_item}
+                onClick={() => handleWatchScreen(video.id)}
+              >
                 <Videos video={video} id={video.id} />
               </Item>
             </Grid>
           ))}
         </Grid>
-          {/* </InfiniteScroll> */}
+        {/* </InfiniteScroll> */}
       </Box>
     </Box>
   );

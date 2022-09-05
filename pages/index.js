@@ -1,8 +1,9 @@
 import { Box } from "@mui/material";
 import React, { useEffect } from "react";
-import HomeScreen from "./HomeScreen";
+// import HomeScreen from "./HomeScreen";
 import {useSelector} from 'react-redux'
 import { useRouter } from 'next/router'
+import Login from "./login";
 
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
   },[accessToken, router])
   return (
     <Box>
-      <HomeScreen />
+      <Login />
     </Box>
   );
 };

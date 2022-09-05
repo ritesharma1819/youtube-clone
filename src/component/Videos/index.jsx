@@ -6,6 +6,7 @@ import { Visibility } from "@mui/icons-material";
 import moment from "moment";
 import numeral from "numeral";
 const Videos = ({ video }) => {
+  console.log("video----------", video);
   const {
     id,
     snippet: {

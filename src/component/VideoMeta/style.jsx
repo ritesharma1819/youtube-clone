@@ -26,6 +26,12 @@ const style = {
     alignItems: "center",
     gap: "2rem",
   },
+  videoMeta_top_container_ThumbIcons_likeCount: {
+    display: "flex",
+    alignItems: "center",
+    gap: "5px",
+  },
+
   videoMeta_middle: {
     marginTop: "1rem",
     borderBottom: "1px solid #808080",

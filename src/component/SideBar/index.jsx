@@ -24,11 +24,16 @@ import style from "./style";
 const SideBar = ({ toggleSideBar, handleToogleSideBar }) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  
+  const handleHomeScreen = () => {
+    router.push("/HomeScreen");
+  };
 
   const handleLogOut = () => {
     dispatch(logout());
-    router.push("/login");
+    router.push("/");
   };
+
   return (
     <Box sx={toggleSideBar ? style.sideBar_open : style.sideBar}>
       <Box position="fixed">
@@ -37,7 +42,7 @@ const SideBar = ({ toggleSideBar, handleToogleSideBar }) => {
           onClick={() => handleToogleSideBar()}
         >
           <List>
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={()=>handleHomeScreen()} >
               <ListItemButton sx={style.sideBar_listItemButton}>
                 <ListItemIcon sx={style.sideBar_icons}>
                   <Home />

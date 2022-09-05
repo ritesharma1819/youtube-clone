@@ -23,3 +23,36 @@ export const getPopularVideos = () => async (dispatch,getState) => {
     console.log(error);
   }
 };
+
+export const getVideoById = (id) => async (dispatch) => {
+  try {
+    const { data } = await request("/videos", {
+      params: {
+        part: "snippet, contentDetails, statistics",
+        id: id,
+      },
+    });
+    dispatch({
+      type: "SELECTED_VIDEO",
+      payload: data.items[0],
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getChannelById = (id) => async (dispatch) => {
+  try {
+    const { data } = await request("/channels", {
+      params: {
+        part: "snippet, contentDetails, statistics",
+        id: id,
+      },
+    });
+    dispatch({
+      type: "CHANNEL_DETAILS",
+      payload: data.items[0],
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

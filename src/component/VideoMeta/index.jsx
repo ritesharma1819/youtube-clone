@@ -4,49 +4,90 @@ import style from "./style";
 import numeral from "numeral";
 import moment from "moment";
 import { ThumbDown, ThumbUp } from "@mui/icons-material";
-import ShowMoreText from "react-show-more-text";
+import { useDispatch, useSelector } from "react-redux";
+import { getChannelById } from "../../redux/action/videos_action";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const VideoMeta = () => {
+  const dispatch = useDispatch();
+  // const router = useRouter();
+  const video = useSelector((state) => state.selectedVideoReducer.video);
+  const channel = useSelector((state) => state.channelDetailsReducer.channel);
+  console.log("videochannel=-=-=-=-=-=-=-", channel);
+  // useEffect(() => {
+  // if (video === null) {
+  //   router.push("/");
+  //   return;
+  // }
+  // }, [])
+
+  // const {
+  //   snippet: { channelId, description, channelTitle, publishedAt },
+  //   statistics: { likeCount, viewCount, commentCount },
+  //   title,
+  // } = video;
+
+  // const {
+  //   statistics: { subscriberCount },
+  //   snippet: {
+  //     thumbnails: { medium },
+  //   },
+  // } = channel;
+
+  useEffect(() => {
+    dispatch(getChannelById(video?.snippet?.channelId));
+  }, [dispatch, video?.snippet?.channelId]);
+
   return (
     <Box sx={style.videoMeta}>
       <Box sx={style.videoMeta_video}>
         <iframe
           width="900px"
           height="450px"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          src={`https://www.youtube.com/embed/${video?.id}`}
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          title="video"
+          title={video?.title}
         ></iframe>
       </Box>
       <Box>
         <Box sx={style.videoMeta_top}>
           <Typography variant="h4" sx={style.textColor_Common}>
-            Video Title
+            {video?.title}
           </Typography>
           <Box sx={style.videoMeta_top_container}>
             <Box sx={style.videoMeta_top_container_viewDetails}>
               <Typography sx={style.textColor_Common}>
-                {numeral("5000").format("0.a")} views •
+                {numeral(video?.statistics?.viewCount).format("0.a")} views •
               </Typography>
               <Typography sx={style.textColor_Common}>
-                {moment("10/08/2005").fromNow()}
+                {moment(video?.snippet?.publishedAt).fromNow()}
               </Typography>
             </Box>
             <Box sx={style.videoMeta_top_container_ThumbIcons}>
-              <ThumbUp />
+              <Box sx={style.videoMeta_top_container_ThumbIcons_likeCount}>
+                {" "}
+                <ThumbUp />
+                <Box sx={style.textColor_Common}>
+                  {numeral(video?.statistics?.likeCount).format("0.a")}
+                </Box>
+              </Box>
               <ThumbDown />
             </Box>
           </Box>
           <Box sx={style.videoMeta_middle}>
             <Box sx={style.videoMeta_middle_container}>
               <Box sx={style.videoMeta_middle_container_ChannelDetails}>
-                <Avatar src="https://i.imgur.com/7nNtq4Z.jpg" />
+                <Avatar src={channel?.snippet?.thumbnails.medium.url} />
                 <Box>
                   <Typography sx={style.textColor_Common}>
-                    Channel Name
+                    {video?.snippet?.channelTitle}
                   </Typography>
                   <Typography sx={style.textColor_Common}>
-                    {numeral("2000").format("0.a")} Subscribers
+                    {numeral(channel?.statistics?.subscriberCount).format(
+                      "0.a"
+                    )}{" "}
+                    Subscribers
                   </Typography>
                 </Box>
               </Box>
@@ -57,19 +98,7 @@ const VideoMeta = () => {
           </Box>
           <Box sx={style.videoMeta_bottom}>
             <Typography sx={{ marginBottom: "1rem", color: "#aaa" }}>
-              {/* <ShowMoreText
-            lines={3}
-            more="Show more"
-            less="Show less"
-
-            > */}
-              Description- Never knew that this video will hit more than 1M
-              views. Thanks everyone for putting your valuable time watching and
-              listening to this song and Have a better future. Description-
-              Never knew that this video will hit more than 1M views. Thanks
-              everyone for putting your valuable time watching and listening to
-              this song and Have a better future.
-              {/* </ShowMoreText> */}
+              {video?.snippet?.description}
             </Typography>
           </Box>
         </Box>

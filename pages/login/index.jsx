@@ -18,7 +18,7 @@ const Login = () => {
   useEffect(() => {
     loading: true;
     if (accessToken) {
-      router.push("/");
+      router.push("/HomeScreen");
     }
     loading: false;
   }, [accessToken, router]);
