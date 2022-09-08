@@ -16,11 +16,9 @@ const Login = () => {
     dispatch(login());
   };
   useEffect(() => {
-    loading: true;
     if (accessToken) {
       router.push("/HomeScreen");
     }
-    loading: false;
   }, [accessToken, router]);
   return (
     <Box sx={style.login_container}>

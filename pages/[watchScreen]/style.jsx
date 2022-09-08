@@ -17,6 +17,7 @@ const style = {
       md: "block",
     },
     gap: "20px",
+    marginLeft: '50px',
     maxHeight: "650px",
     overflowY: "scroll",
 

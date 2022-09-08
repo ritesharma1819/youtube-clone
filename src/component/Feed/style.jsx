@@ -16,6 +16,13 @@ const style = {
   },
   grid_item: {
     cursor: 'pointer'
+  },
+  skelton:{
+     display: "flex",
+     alignItems: "center",
+     gap: "10px",
+     marginTop: "10px",
+     
   }
 };
 

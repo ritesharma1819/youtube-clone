@@ -1,5 +1,6 @@
 const style = {
   videosuggestion_container: {
+    width: '200px',
     height: "710px",
     overflowY: "scroll",
   },

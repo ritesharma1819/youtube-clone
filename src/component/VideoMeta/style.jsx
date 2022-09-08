@@ -6,6 +6,9 @@ const style = {
   videoMeta_video: {
     maxWidth: "900px",
     maxHeight: "450px",
+    overflow: 'hidden',
+    display: 'flex',
+    justifyContent: 'center',
   },
   videoMeta_top: {
     padding: "1rem",

@@ -2,6 +2,7 @@ import request from "../../utils/api";
 
 export const getPopularVideos = () => async (dispatch, getState) => {
   try {
+    dispatch({type: "HOME_VIDEOS_LOADING", payload: true});
     const { data } = await request("/videos", {
       params: {
         part: "snippet, contentDetails, statistics",
@@ -19,6 +20,7 @@ export const getPopularVideos = () => async (dispatch, getState) => {
         nextPageToken: data.nextPageToken,
       },
     });
+    dispatch({type: "HOME_VIDEOS_LOADING", payload: false});
   } catch (error) {
     console.log(error);
   }

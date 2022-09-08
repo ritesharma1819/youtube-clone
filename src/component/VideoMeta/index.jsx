@@ -19,21 +19,20 @@ const VideoMeta = () => {
   // const router = useRouter();
   const video = useSelector((state) => state.selectedVideoReducer.video);
   const channel = useSelector((state) => state.channelDetailsReducer.channel);
-  const [comments, setComments]=useState()
+  const [comments, setComments] = useState();
 
-  const getCommentData= async()=>{
-    const data= await request("/commentThreads", {                      
+  const getCommentData = async () => {
+    const data = await request("/commentThreads", {
       params: {
         part: "snippet",
         videoId: video?.id,
-      }})
-      console.log("commentdata-0-0-0-0-0-=", data);
-      setComments(data.data.items)
-  }
+      },
+    });
+    setComments(data.data.items);
+  };
   // const comments = useSelector(
   //   (state) => state.getCommentListReducer?.comments
   // );
-  console.log("videochannel=-=-=-=-=-=-=-", comments);
   // const isSubscribed = useSelector((state) => state.subscriptionStatusReducer?.isSubscribed);
   // useEffect(() => {
   // if (video === null) {
@@ -55,20 +54,18 @@ const VideoMeta = () => {
   //   },
   // } = channel;
 
-
-
   useEffect(() => {
     dispatch(getChannelById(video?.snippet?.channelId));
     // dispatch(checkSubscriptionStatus(video?.snippet?.channelId));
     // dispatch(getCommentList(video?.id));
-    getCommentData()
+    getCommentData();
   }, [dispatch, video?.id, video?.snippet?.channelId]);
 
   return (
     <Box sx={style.videoMeta}>
       <Box sx={style.videoMeta_video}>
         <iframe
-          width="900px"
+          width="750px"
           height="450px"
           src={`https://www.youtube.com/embed/${video?.id}`}
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

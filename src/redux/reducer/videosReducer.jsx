@@ -14,6 +14,11 @@ export const homeVideoReducer = (
         videos: payload.videos,
         nextPageToken: payload.nextPageToken,
       };
+    case "HOME_VIDEOS_LOADING":
+      return {
+        ...state,
+        loading: payload,
+      };
     default:
       return state;
   }
