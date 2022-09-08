@@ -24,7 +24,7 @@ const Feed = () => {
   }));
   const handleWatchScreen = (video_id) => {
     console.log("video_id==========", video_id);
-    router.push("/watchScreen");
+    router.push(`/watchScreen${video_id}`);
     dispatch(getVideoById(video_id));
   };
   useEffect(() => {

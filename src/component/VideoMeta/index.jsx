@@ -5,16 +5,36 @@ import numeral from "numeral";
 import moment from "moment";
 import { ThumbDown, ThumbUp } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { getChannelById } from "../../redux/action/videos_action";
+import {
+  checkSubscriptionStatus,
+  getChannelById,
+} from "../../redux/action/videos_action";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import request from "../../utils/api";
 
 const VideoMeta = () => {
   const dispatch = useDispatch();
   // const router = useRouter();
   const video = useSelector((state) => state.selectedVideoReducer.video);
   const channel = useSelector((state) => state.channelDetailsReducer.channel);
-  console.log("videochannel=-=-=-=-=-=-=-", channel);
+  const [comments, setComments]=useState()
+
+  const getCommentData= async()=>{
+    const data= await request("/commentThreads", {                      
+      params: {
+        part: "snippet",
+        videoId: video?.id,
+      }})
+      console.log("commentdata-0-0-0-0-0-=", data);
+      setComments(data.data.items)
+  }
+  // const comments = useSelector(
+  //   (state) => state.getCommentListReducer?.comments
+  // );
+  console.log("videochannel=-=-=-=-=-=-=-", comments);
+  // const isSubscribed = useSelector((state) => state.subscriptionStatusReducer?.isSubscribed);
   // useEffect(() => {
   // if (video === null) {
   //   router.push("/");
@@ -35,9 +55,14 @@ const VideoMeta = () => {
   //   },
   // } = channel;
 
+
+
   useEffect(() => {
     dispatch(getChannelById(video?.snippet?.channelId));
-  }, [dispatch, video?.snippet?.channelId]);
+    // dispatch(checkSubscriptionStatus(video?.snippet?.channelId));
+    // dispatch(getCommentList(video?.id));
+    getCommentData()
+  }, [dispatch, video?.id, video?.snippet?.channelId]);
 
   return (
     <Box sx={style.videoMeta}>
@@ -92,7 +117,8 @@ const VideoMeta = () => {
                 </Box>
               </Box>
               <Typography sx={style.videoMeta_middle_container_Subscribe_Btn}>
-                Subscribers
+                {/* {isSubscribed ? "Subscribed" : "Subscribe"} */}
+                Subscribe
               </Typography>
             </Box>
           </Box>
@@ -112,21 +138,35 @@ const VideoMeta = () => {
             />
             <Button sx={style.videoMeta_Comment_Btn}>Comment</Button>
           </Box>
-          {[...Array(10)].map((_, index) => {
-            return (
-              <Box key={index} sx={style.videoMeta_Comment_list}>
-                <Avatar src="" alt="User" />
-                <Box>
-                  <Typography>
-                    UserName • {moment("12/08/2009").fromNow()}
-                  </Typography>
-                  <Typography sx={style.textColor_Common} variant="p">
-                    Comments
-                  </Typography>
+          {comments &&
+            comments?.map((comment, index) => {
+              return (
+                <Box key={index} sx={style.videoMeta_Comment_list}>
+                  <Avatar
+                    src={
+                      comment?.snippet.topLevelComment.snippet
+                        .authorProfileImageUrl
+                    }
+                    alt="User"
+                  />
+                  <Box>
+                    <Typography>
+                      {
+                        comment?.snippet.topLevelComment.snippet
+                          .authorDisplayName
+                      }{" "}
+                      •{" "}
+                      {moment(
+                        comment?.snippet.topLevelComment.snippet.publishedAt
+                      ).fromNow()}
+                    </Typography>
+                    <Typography sx={style.textColor_Common} variant="p">
+                      {comment?.snippet.topLevelComment.snippet.textOriginal}
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
-            );
-          })}
+              );
+            })}
         </Box>
       </Box>
     </Box>

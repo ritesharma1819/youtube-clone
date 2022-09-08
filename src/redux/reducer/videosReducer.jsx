@@ -51,3 +51,18 @@ export const channelDetailsReducer = (
       return state;
   }
 };
+export const subscriptionStatusReducer = (
+  state = { loading: true, isSubscribed: false },
+  action
+) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "CHECK_SUBSCRIPTION_STATUS":
+      return {
+        ...state,
+        isSubscribed: payload,
+      };
+    default:
+      return state;
+  }
+};
