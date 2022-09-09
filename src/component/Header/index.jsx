@@ -6,16 +6,23 @@ import { useState } from "react";
 import youtubeLogo from "../../static/logo.png";
 import style from "./style";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { getVideoBySearch } from "../../redux/action/videos_action";
 
 const Header = ({ handleToogleSideBar }) => {
   const [searchText, setSearchText] = useState("");
+  const dispatch =useDispatch()
   const router = useRouter();
 
   const handleSeachedVideo = (e) => {
     e.preventDefault();
     console.log(searchText);
+    if(searchText){
+      dispatch(getVideoBySearch(searchText))
+    }
     router.push(`/SearchVideos`);
   };
+
   return (
     <Box sx={style.header}>
       <Box sx={style.header_container}>

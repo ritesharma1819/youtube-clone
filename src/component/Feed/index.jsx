@@ -12,7 +12,7 @@ import {
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const Feed = () => {
-  const { videos } = useSelector((state) => state.homeVideoReducer);
+  const { videos, loading } = useSelector((state) => state.homeVideoReducer);
   const dispatch = useDispatch();
   const router = useRouter();
   const Item = styled(Paper)(({ theme }) => ({
@@ -45,7 +45,7 @@ const Feed = () => {
           spacing={{ xs: 2, md: 3 }}
           columns={{ lg: 16, md: 12, sm: 8, xs: 1 }}
         >
-          {videos.length > 0
+          {loading
             ? videos.map((video, index) => (
                 <Grid item xs={2} sm={4} md={4} key={index}>
                   <Item

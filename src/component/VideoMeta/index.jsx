@@ -17,7 +17,7 @@ import request from "../../utils/api";
 const VideoMeta = () => {
   const dispatch = useDispatch();
   // const router = useRouter();
-  const video = useSelector((state) => state.selectedVideoReducer.video);
+  const {video, loading} = useSelector((state) => state.selectedVideoReducer);
   const channel = useSelector((state) => state.channelDetailsReducer.channel);
   const [comments, setComments] = useState();
 
@@ -63,7 +63,7 @@ const VideoMeta = () => {
 
   return (
     <Box>
-      {false ? (
+      {loading ? (
       <Box sx={style.videoMeta}>
         <Box sx={style.videoMeta_video}>
           <iframe

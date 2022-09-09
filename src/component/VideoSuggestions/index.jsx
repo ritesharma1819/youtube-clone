@@ -6,17 +6,20 @@ import style from "./style";
 import { Visibility } from "@mui/icons-material";
 import { useState } from "react";
 import request from "../../utils/api";
-import {useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { getVideoById } from "../../redux/action/videos_action";
 
 const VideoSuggestions = () => {
-  const router=useRouter()
-  const dispatch=useDispatch()
+  const router = useRouter();
+  const dispatch = useDispatch();
   const video = useSelector((state) => state.selectedVideoReducer.video);
   const [relatedVideo, setRelatedVideo] = useState();
+  const [loading, setLoading] = useState(false);
   console.log("realted video", relatedVideo);
+
   const getRelatedVideoData = async () => {
+    setLoading(true);
     const data = await request("/search", {
       params: {
         part: "snippet",
@@ -26,14 +29,13 @@ const VideoSuggestions = () => {
       },
     });
     setRelatedVideo(data?.data.items);
+    setLoading(false);
   };
 
-  const handleRelatedVideo=(video_id)=>{
-     router.push(`/watch${video_id}`)
-     dispatch(getVideoById(video_id))
-  }
-
-
+  const handleRelatedVideo = (video_id) => {
+    router.push(`/watch${video_id}`);
+    dispatch(getVideoById(video_id));
+  };
 
   useEffect(() => {
     getRelatedVideoData();
@@ -54,12 +56,16 @@ const VideoSuggestions = () => {
 
   return (
     <Box sx={style.videosuggestion_container}>
-      {true ? (
+      {loading ? (
         relatedVideo
           ?.filter((item) => item.snippet)
           .map((videos, index) => {
             return (
-              <Box key={index} sx={style.videosuggestion} onClick={()=>handleRelatedVideo(videos.id.videoId)}>
+              <Box
+                key={index}
+                sx={style.videosuggestion}
+                onClick={() => handleRelatedVideo(videos.id.videoId)}
+              >
                 <Box sx={style.videosuggestion_img}>
                   <Avatar
                     src={videos.snippet.thumbnails.medium.url}

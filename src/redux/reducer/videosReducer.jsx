@@ -36,6 +36,11 @@ export const selectedVideoReducer = (
         video: payload,
         loading: false,
       };
+    case "SELECTED_VIDEO_LOADING":
+      return {
+        ...state,
+        loading: payload,
+      };
     default:
       return state;
   }
@@ -66,6 +71,23 @@ export const subscriptionStatusReducer = (
       return {
         ...state,
         isSubscribed: payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const videoBySearchReducer = (
+  state = { loading: true, video: {} },
+  action
+) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "SSEARCHED_VIDEOS":
+      return {
+        ...state,
+        video: payload,
+        loading: false,
       };
     default:
       return state;

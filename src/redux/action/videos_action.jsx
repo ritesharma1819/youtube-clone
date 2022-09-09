@@ -28,6 +28,7 @@ export const getPopularVideos = () => async (dispatch, getState) => {
 
 export const getVideoById = (id) => async (dispatch) => {
   try {
+    dispatch({type: "SELECTED_VIDEO_LOADING", payload: true});
     const { data } = await request("/videos", {
       params: {
         part: "snippet, contentDetails, statistics",
@@ -38,6 +39,7 @@ export const getVideoById = (id) => async (dispatch) => {
       type: "SELECTED_VIDEO",
       payload: data.items[0],
     });
+    dispatch({type: "SELECTED_VIDEO_LOADING", payload: false});
   } catch (error) {
     console.log(error);
   }
@@ -53,6 +55,26 @@ export const getChannelById = (id) => async (dispatch) => {
     dispatch({
       type: "CHANNEL_DETAILS",
       payload: data.items[0],
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getVideoBySearch = keyword => async (dispatch) => {
+  try {
+    const { data } = await request("/search", {
+      params: {
+        part: "snippet",
+        q: keyword,
+        maxResults: 30,
+        type: "video",
+          
+      },
+    });
+    console.log("search========", data);
+    dispatch({
+      type: "SEARCHED_VIDEOS",
+      payload: data.items,
     });
   } catch (error) {
     console.log(error);
