@@ -2,10 +2,20 @@ import { Apps, Menu, Notifications, Search } from "@mui/icons-material";
 import { Avatar, Box, Button, TextField } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import { useState } from "react";
 import youtubeLogo from "../../static/logo.png";
 import style from "./style";
+import { useRouter } from "next/router";
 
 const Header = ({ handleToogleSideBar }) => {
+  const [searchText, setSearchText] = useState("");
+  const router = useRouter();
+
+  const handleSeachedVideo = (e) => {
+    e.preventDefault();
+    console.log(searchText);
+    router.push(`/SearchVideos`);
+  };
   return (
     <Box sx={style.header}>
       <Box sx={style.header_container}>
@@ -27,8 +37,13 @@ const Header = ({ handleToogleSideBar }) => {
             variant="standard"
             sx={style.header_textField}
             placeholder="  Search..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
           />
-          <Button sx={style.header_button}>
+          <Button
+            sx={style.header_button}
+            onClick={(e) => handleSeachedVideo(e)}
+          >
             <Search />
           </Button>
         </Box>
