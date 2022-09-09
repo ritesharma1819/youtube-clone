@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, Skeleton, TextField, Typography } from "@mui/material";
 import React from "react";
 import style from "./style";
 import numeral from "numeral";
@@ -62,110 +62,120 @@ const VideoMeta = () => {
   }, [dispatch, video?.id, video?.snippet?.channelId]);
 
   return (
-    <Box sx={style.videoMeta}>
-      <Box sx={style.videoMeta_video}>
-        <iframe
-          width="750px"
-          height="450px"
-          src={`https://www.youtube.com/embed/${video?.id}`}
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          title={video?.title}
-        ></iframe>
-      </Box>
-      <Box>
-        <Box sx={style.videoMeta_top}>
-          <Typography variant="h4" sx={style.textColor_Common}>
-            {video?.title}
-          </Typography>
-          <Box sx={style.videoMeta_top_container}>
-            <Box sx={style.videoMeta_top_container_viewDetails}>
-              <Typography sx={style.textColor_Common}>
-                {numeral(video?.statistics?.viewCount).format("0.a")} views •
-              </Typography>
-              <Typography sx={style.textColor_Common}>
-                {moment(video?.snippet?.publishedAt).fromNow()}
-              </Typography>
-            </Box>
-            <Box sx={style.videoMeta_top_container_ThumbIcons}>
-              <Box sx={style.videoMeta_top_container_ThumbIcons_likeCount}>
-                {" "}
-                <ThumbUp />
-                <Box sx={style.textColor_Common}>
-                  {numeral(video?.statistics?.likeCount).format("0.a")}
-                </Box>
-              </Box>
-              <ThumbDown />
-            </Box>
-          </Box>
-          <Box sx={style.videoMeta_middle}>
-            <Box sx={style.videoMeta_middle_container}>
-              <Box sx={style.videoMeta_middle_container_ChannelDetails}>
-                <Avatar src={channel?.snippet?.thumbnails.medium.url} />
-                <Box>
-                  <Typography sx={style.textColor_Common}>
-                    {video?.snippet?.channelTitle}
-                  </Typography>
-                  <Typography sx={style.textColor_Common}>
-                    {numeral(channel?.statistics?.subscriberCount).format(
-                      "0.a"
-                    )}{" "}
-                    Subscribers
-                  </Typography>
-                </Box>
-              </Box>
-              <Typography sx={style.videoMeta_middle_container_Subscribe_Btn}>
-                {/* {isSubscribed ? "Subscribed" : "Subscribe"} */}
-                Subscribe
-              </Typography>
-            </Box>
-          </Box>
-          <Box sx={style.videoMeta_bottom}>
-            <Typography sx={{ marginBottom: "1rem", color: "#aaa" }}>
-              {video?.snippet?.description}
-            </Typography>
-          </Box>
+    <Box>
+      {false ? (
+      <Box sx={style.videoMeta}>
+        <Box sx={style.videoMeta_video}>
+          <iframe
+            width="750px"
+            height="450px"
+            src={`https://www.youtube.com/embed/${video?.id}`}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            title={video?.title}
+          ></iframe>
         </Box>
         <Box>
-          <Box sx={style.videoMeta_Comment_container}>
-            <Avatar sx={style.videoMeta_Comment_Avatar} src="" alt="User" />
-            <TextField
-              variant="standard"
-              sx={style.videoMeta_Comment_TextField}
-              placeholder="Add a comment..."
-            />
-            <Button sx={style.videoMeta_Comment_Btn}>Comment</Button>
-          </Box>
-          {comments &&
-            comments?.map((comment, index) => {
-              return (
-                <Box key={index} sx={style.videoMeta_Comment_list}>
-                  <Avatar
-                    src={
-                      comment?.snippet.topLevelComment.snippet
-                        .authorProfileImageUrl
-                    }
-                    alt="User"
-                  />
+          <Box sx={style.videoMeta_top}>
+            <Typography variant="h4" sx={style.textColor_Common}>
+              {video?.title}
+            </Typography>
+            <Box sx={style.videoMeta_top_container}>
+              <Box sx={style.videoMeta_top_container_viewDetails}>
+                <Typography sx={style.textColor_Common}>
+                  {numeral(video?.statistics?.viewCount).format("0.a")} views •
+                </Typography>
+                <Typography sx={style.textColor_Common}>
+                  {moment(video?.snippet?.publishedAt).fromNow()}
+                </Typography>
+              </Box>
+              <Box sx={style.videoMeta_top_container_ThumbIcons}>
+                <Box sx={style.videoMeta_top_container_ThumbIcons_likeCount}>
+                  {" "}
+                  <ThumbUp />
+                  <Box sx={style.textColor_Common}>
+                    {numeral(video?.statistics?.likeCount).format("0.a")}
+                  </Box>
+                </Box>
+                <ThumbDown />
+              </Box>
+            </Box>
+            <Box sx={style.videoMeta_middle}>
+              <Box sx={style.videoMeta_middle_container}>
+                <Box sx={style.videoMeta_middle_container_ChannelDetails}>
+                  <Avatar src={channel?.snippet?.thumbnails.medium.url} />
                   <Box>
-                    <Typography>
-                      {
-                        comment?.snippet.topLevelComment.snippet
-                          .authorDisplayName
-                      }{" "}
-                      •{" "}
-                      {moment(
-                        comment?.snippet.topLevelComment.snippet.publishedAt
-                      ).fromNow()}
+                    <Typography sx={style.textColor_Common}>
+                      {video?.snippet?.channelTitle}
                     </Typography>
-                    <Typography sx={style.textColor_Common} variant="p">
-                      {comment?.snippet.topLevelComment.snippet.textOriginal}
+                    <Typography sx={style.textColor_Common}>
+                      {numeral(channel?.statistics?.subscriberCount).format(
+                        "0.a"
+                      )}{" "}
+                      Subscribers
                     </Typography>
                   </Box>
                 </Box>
-              );
-            })}
+                <Typography sx={style.videoMeta_middle_container_Subscribe_Btn}>
+                  {/* {isSubscribed ? "Subscribed" : "Subscribe"} */}
+                  Subscribe
+                </Typography>
+              </Box>
+            </Box>
+            <Box sx={style.videoMeta_bottom}>
+              <Typography sx={{ marginBottom: "1rem", color: "#aaa" }}>
+                {video?.snippet?.description}
+              </Typography>
+            </Box>
+          </Box>
+          <Box>
+            <Box sx={style.videoMeta_Comment_container}>
+              <Avatar sx={style.videoMeta_Comment_Avatar} src="" alt="User" />
+              <TextField
+                variant="standard"
+                sx={style.videoMeta_Comment_TextField}
+                placeholder="Add a comment..."
+              />
+              <Button sx={style.videoMeta_Comment_Btn}>Comment</Button>
+            </Box>
+            {comments &&
+              comments?.map((comment, index) => {
+                return (
+                  <Box key={index} sx={style.videoMeta_Comment_list}>
+                    <Avatar
+                      src={
+                        comment?.snippet.topLevelComment.snippet
+                          .authorProfileImageUrl
+                      }
+                      alt="User"
+                    />
+                    <Box>
+                      <Typography>
+                        {
+                          comment?.snippet.topLevelComment.snippet
+                            .authorDisplayName
+                        }{" "}
+                        •{" "}
+                        {moment(
+                          comment?.snippet.topLevelComment.snippet.publishedAt
+                        ).fromNow()}
+                      </Typography>
+                      <Typography sx={style.textColor_Common} variant="p">
+                        {comment?.snippet.topLevelComment.snippet.textOriginal}
+                      </Typography>
+                    </Box>
+                  </Box>
+                );
+              })}
+          </Box>
         </Box>
       </Box>
+      ) :(
+        <Box>
+          <Skeleton variant="rectangular" width={800} height={550} />
+          <Skeleton variant="rectangular" width={550} height={30} sx={{marginTop: '10px', marginBottom: '10px'}} />
+          <Skeleton variant="rectangular" width={250} height={30} />
+        </Box>
+      )}
     </Box>
   );
 };
