@@ -62,6 +62,7 @@ export const getChannelById = (id) => async (dispatch) => {
 };
 export const getVideoBySearch = keyword => async (dispatch) => {
   try {
+    dispatch({type: "SEARCHED_VIDEOS_LOADING", payload: true});
     const { data } = await request("/search", {
       params: {
         part: "snippet",
@@ -71,11 +72,12 @@ export const getVideoBySearch = keyword => async (dispatch) => {
           
       },
     });
-    console.log("search========", data);
+    console.log("search========", data.items);
     dispatch({
       type: "SEARCHED_VIDEOS",
-      payload: data.items,
+      payload: data?.items,
     });
+    dispatch({type: "SEARCHED_VIDEOS_LOADING", payload: false});
   } catch (error) {
     console.log(error);
   }

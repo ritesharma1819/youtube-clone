@@ -56,7 +56,7 @@ const VideoSuggestions = () => {
 
   return (
     <Box sx={style.videosuggestion_container}>
-      {loading ? (
+      { !loading ? (
         relatedVideo
           ?.filter((item) => item.snippet)
           .map((videos, index) => {

@@ -63,7 +63,7 @@ const VideoMeta = () => {
 
   return (
     <Box>
-      {loading ? (
+      { !loading ? (
       <Box sx={style.videoMeta}>
         <Box sx={style.videoMeta_video}>
           <iframe

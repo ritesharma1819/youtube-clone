@@ -83,10 +83,14 @@ export const videoBySearchReducer = (
 ) => {
   const { type, payload } = action;
   switch (type) {
-    case "SSEARCHED_VIDEOS":
+    case "SEARCHED_VIDEOS":
       return {
         ...state,
         video: payload,
+      };
+    case "SEARCHED_VIDEOS_LOADING":
+      return {
+        ...state,
         loading: false,
       };
     default:
