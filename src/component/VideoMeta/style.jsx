@@ -1,14 +1,13 @@
 const style = {
   videoMeta: {
     maxWidth: "900px",
-    // maxHeight: "50px",
   },
   videoMeta_video: {
     maxWidth: "900px",
     maxHeight: "450px",
-    overflow: 'hidden',
-    display: 'flex',
-    justifyContent: 'center',
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "center",
   },
   videoMeta_top: {
     padding: "1rem",
@@ -66,7 +65,6 @@ const style = {
   },
   videoMeta_Comment_container: {
     display: "flex",
-    // justifyContent: "space-between",
     alignItems: "center",
     marginTop: "0.5rem",
     marginBottom: "0.5rem",

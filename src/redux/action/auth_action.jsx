@@ -8,7 +8,6 @@ const login = () => async (dispatch) => {
       "https://www.googleapis.com/auth/youtube.force-ssl"
     );
     const res = await auth.signInWithPopup(googleprovider);
-    console.log(res);
     const accessToken = res.credential.accessToken;
     const profile = {
       name: res.additionalUserInfo.profile.name,

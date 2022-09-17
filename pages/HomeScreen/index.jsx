@@ -1,8 +1,8 @@
 import { Box } from "@mui/system";
 import React, { useState } from "react";
+import Feed from "../../src/component/Feed";
 import Header from "../../src/component/Header";
 import SideBar from "../../src/component/SideBar";
-import Feed from "../../src/component/Feed";
 import style from "./style";
 
 const HomeScreen = () => {

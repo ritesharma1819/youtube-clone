@@ -11,7 +11,7 @@ const style = {
     flexDirection: "column",
     alignItems: "center",
     marginTop: "200px",
-    gap:'10px'
+    gap: "10px",
   },
   login_title: {
     marginTop: "50px",

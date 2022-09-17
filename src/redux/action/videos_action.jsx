@@ -2,7 +2,7 @@ import request from "../../utils/api";
 
 export const getPopularVideos = () => async (dispatch, getState) => {
   try {
-    dispatch({type: "HOME_VIDEOS_LOADING", payload: true});
+    dispatch({ type: "HOME_VIDEOS_LOADING", payload: true });
     const { data } = await request("/videos", {
       params: {
         part: "snippet, contentDetails, statistics",
@@ -12,7 +12,6 @@ export const getPopularVideos = () => async (dispatch, getState) => {
         pageToken: getState().homeVideoReducer.nextPageToken,
       },
     });
-    console.log(data);
     dispatch({
       type: "GET_VIDEOS",
       payload: {
@@ -20,7 +19,7 @@ export const getPopularVideos = () => async (dispatch, getState) => {
         nextPageToken: data.nextPageToken,
       },
     });
-    dispatch({type: "HOME_VIDEOS_LOADING", payload: false});
+    dispatch({ type: "HOME_VIDEOS_LOADING", payload: false });
   } catch (error) {
     console.log(error);
   }
@@ -28,7 +27,7 @@ export const getPopularVideos = () => async (dispatch, getState) => {
 
 export const getVideoById = (id) => async (dispatch) => {
   try {
-    dispatch({type: "SELECTED_VIDEO_LOADING", payload: true});
+    dispatch({ type: "SELECTED_VIDEO_LOADING", payload: true });
     const { data } = await request("/videos", {
       params: {
         part: "snippet, contentDetails, statistics",
@@ -39,7 +38,7 @@ export const getVideoById = (id) => async (dispatch) => {
       type: "SELECTED_VIDEO",
       payload: data.items[0],
     });
-    dispatch({type: "SELECTED_VIDEO_LOADING", payload: false});
+    dispatch({ type: "SELECTED_VIDEO_LOADING", payload: false });
   } catch (error) {
     console.log(error);
   }
@@ -60,24 +59,22 @@ export const getChannelById = (id) => async (dispatch) => {
     console.log(error);
   }
 };
-export const getVideoBySearch = keyword => async (dispatch) => {
+export const getVideoBySearch = (keyword) => async (dispatch) => {
   try {
-    dispatch({type: "SEARCHED_VIDEOS_LOADING", payload: true});
+    dispatch({ type: "SEARCHED_VIDEOS_LOADING", payload: true });
     const { data } = await request("/search", {
       params: {
         part: "snippet",
         q: keyword,
         maxResults: 30,
         type: "video",
-          
       },
     });
-    console.log("search========", data.items);
     dispatch({
       type: "SEARCHED_VIDEOS",
       payload: data?.items,
     });
-    dispatch({type: "SEARCHED_VIDEOS_LOADING", payload: false});
+    dispatch({ type: "SEARCHED_VIDEOS_LOADING", payload: false });
   } catch (error) {
     console.log(error);
   }

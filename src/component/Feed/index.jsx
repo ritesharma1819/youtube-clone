@@ -1,15 +1,14 @@
-import { CircularProgress, Grid, Paper, Skeleton, styled } from "@mui/material";
+import { Grid, Paper, Skeleton, styled } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
-import style from "./style";
-import Videos from "../Videos";
 import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getPopularVideos,
   getVideoById,
 } from "../../redux/action/videos_action";
-import InfiniteScroll from "react-infinite-scroll-component";
+import Videos from "../Videos";
+import style from "./style";
 
 const Feed = () => {
   const { videos, loading } = useSelector((state) => state.homeVideoReducer);
@@ -23,7 +22,6 @@ const Feed = () => {
     color: "white",
   }));
   const handleWatchScreen = (video_id) => {
-    console.log("video_id==========", video_id);
     router.push(`/watchScreen${video_id}`);
     dispatch(getVideoById(video_id));
   };
@@ -45,7 +43,7 @@ const Feed = () => {
           spacing={{ xs: 2, md: 3 }}
           columns={{ lg: 16, md: 12, sm: 8, xs: 1 }}
         >
-          { !loading
+          {!loading
             ? videos.map((video, index) => (
                 <Grid item xs={2} sm={4} md={4} key={index}>
                   <Item

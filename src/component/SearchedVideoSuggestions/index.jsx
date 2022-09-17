@@ -12,7 +12,6 @@ const SearchedVideoSuggestions = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { video, loading } = useSelector((state) => state.videoBySearchReducer);
-  console.log("video", video, loading);
   const handleRelatedVideo = (video_id) => {
     router.push(`/watch${video_id}`);
     dispatch(getVideoById(video_id));

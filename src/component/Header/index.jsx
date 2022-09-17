@@ -1,24 +1,22 @@
 import { Apps, Menu, Notifications, Search } from "@mui/icons-material";
 import { Avatar, Box, Button, TextField } from "@mui/material";
 import Image from "next/image";
-import React from "react";
-import { useState } from "react";
-import youtubeLogo from "../../static/logo.png";
-import style from "./style";
 import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getVideoBySearch } from "../../redux/action/videos_action";
+import youtubeLogo from "../../static/logo.png";
+import style from "./style";
 
 const Header = ({ handleToogleSideBar }) => {
   const [searchText, setSearchText] = useState("");
-  const dispatch =useDispatch()
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const handleSeachedVideo = (e) => {
     e.preventDefault();
-    console.log(searchText);
-    if(searchText){
-      dispatch(getVideoBySearch(searchText))
+    if (searchText) {
+      dispatch(getVideoBySearch(searchText));
     }
     router.push(`/SearchVideos`);
   };

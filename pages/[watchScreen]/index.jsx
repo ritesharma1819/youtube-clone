@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
 import React, { useState } from "react";
-import SideBar from "../../src/component/SideBar";
-import style from "./style";
 import Header from "../../src/component/Header";
+import SideBar from "../../src/component/SideBar";
 import VideoMeta from "../../src/component/VideoMeta";
 import VideoSuggestions from "../../src/component/VideoSuggestions";
+import style from "./style";
 
 const WatchScreen = () => {
   const [toggleSideBar, setToggleSideBar] = useState(false);

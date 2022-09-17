@@ -1,16 +1,16 @@
-import { Box } from '@mui/system'
-import React, { useState } from 'react'
-import Header from '../../src/component/Header'
-import SearchedVideoSuggestions from '../../src/component/SearchedVideoSuggestions'
-import SideBar from '../../src/component/SideBar'
-import style from './style'
+import { Box } from "@mui/system";
+import React, { useState } from "react";
+import Header from "../../src/component/Header";
+import SearchedVideoSuggestions from "../../src/component/SearchedVideoSuggestions";
+import SideBar from "../../src/component/SideBar";
+import style from "./style";
 
 const SearchVideos = () => {
-    const [toggleSideBar, setToggleSideBar] = useState(false);
+  const [toggleSideBar, setToggleSideBar] = useState(false);
 
-    const handleToogleSideBar = () => {
-      setToggleSideBar((value) => !value);
-    };
+  const handleToogleSideBar = () => {
+    setToggleSideBar((value) => !value);
+  };
   return (
     <Box sx={style.container.primary}>
       <Header handleToogleSideBar={handleToogleSideBar} />
@@ -20,11 +20,11 @@ const SearchVideos = () => {
           handleToogleSideBar={handleToogleSideBar}
         />
         <Box sx={style.watchscreen}>
-          <SearchedVideoSuggestions /> 
+          <SearchedVideoSuggestions />
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default SearchVideos
+export default SearchVideos;

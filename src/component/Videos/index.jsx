@@ -1,14 +1,12 @@
-import { Box, Typography } from "@mui/material";
-import React, { useEffect } from "react";
-import Image from "next/image";
-import style from "./style";
 import { Visibility } from "@mui/icons-material";
+import { Box, Typography } from "@mui/material";
 import moment from "moment";
+import Image from "next/image";
 import numeral from "numeral";
+import React from "react";
+import style from "./style";
 const Videos = ({ video }) => {
-  console.log("video----------", video);
   const {
-    id,
     snippet: {
       title,
       channelTitle,
@@ -22,7 +20,7 @@ const Videos = ({ video }) => {
   const seconds = moment.duration(duration).asSeconds();
   const _duration = moment.utc(seconds * 1000).format("mm:ss");
 
-  const myLoader = ({ src }) => {
+  const myLoader = () => {
     return medium.url;
   };
 

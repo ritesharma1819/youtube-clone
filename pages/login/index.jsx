@@ -8,7 +8,7 @@ import youtubelogo from "../../src/static/logo.png";
 import style from "./style";
 
 const Login = () => {
-  const { accessToken, loading } = useSelector((state) => state.authReducer);
+  const { accessToken } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const router = useRouter();
 

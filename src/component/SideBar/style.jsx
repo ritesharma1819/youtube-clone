@@ -1,21 +1,17 @@
 const style = {
   sideBar: {
-    // backgroundColor: "green",
-    // flex: 0.6,
     height: "100%",
     padding: "10px",
     display: {
       xs: "none",
       sm: "block",
     },
-    width:{
-      md: '250px',
-      sm: '200px'
+    width: {
+      md: "250px",
+      sm: "200px",
     },
-    
   },
   sideBar_open: {
-    // backgroundColor: "green",
     flex: 0.6,
     height: "100%",
     padding: "10px",
@@ -23,7 +19,7 @@ const style = {
       xs: "block",
     },
     width: {
-      xs: "100px"
+      xs: "100px",
     },
   },
   sideBar_listItemButton: {

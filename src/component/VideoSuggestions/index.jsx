@@ -16,7 +16,6 @@ const VideoSuggestions = () => {
   const video = useSelector((state) => state.selectedVideoReducer.video);
   const [relatedVideo, setRelatedVideo] = useState();
   const [loading, setLoading] = useState(false);
-  console.log("realted video", relatedVideo);
 
   const getRelatedVideoData = async () => {
     setLoading(true);
