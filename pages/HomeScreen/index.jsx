@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Feed from "../../src/component/Feed";
 import Header from "../../src/component/Header";
 import SideBar from "../../src/component/SideBar";
-import style from "../../styles/HomePagestyle/style";
+import style from "../../styles/HomePagestyle";
 
 const HomeScreen = () => {
   const [toggleSideBar, setToggleSideBar] = useState(false);

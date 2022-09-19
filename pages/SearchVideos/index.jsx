@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "../../src/component/Header";
 import SearchedVideoSuggestions from "../../src/component/SearchedVideoSuggestions";
 import SideBar from "../../src/component/SideBar";
-import style from "../../styles/HomePagestyle/style";
+import style from "../../styles/HomePagestyle";
 
 const SearchVideos = () => {
   const [toggleSideBar, setToggleSideBar] = useState(false);
