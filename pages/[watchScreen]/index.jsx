@@ -4,7 +4,7 @@ import Header from "../../src/component/Header";
 import SideBar from "../../src/component/SideBar";
 import VideoMeta from "../../src/component/VideoMeta";
 import VideoSuggestions from "../../src/component/VideoSuggestions";
-import style from "./style";
+import style from "../../styles/WatchPagestyle/style";
 
 const WatchScreen = () => {
   const [toggleSideBar, setToggleSideBar] = useState(false);

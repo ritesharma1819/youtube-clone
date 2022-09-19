@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import login from "../../src/redux/action/auth_action";
 import youtubelogo from "../../src/static/logo.png";
-import style from "./style";
+import style from "../../styles/logInPagestyle";
 
 const Login = () => {
   const { accessToken } = useSelector((state) => state.authReducer);
