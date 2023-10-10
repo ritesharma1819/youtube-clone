@@ -17,9 +17,19 @@ const style = {
     marginTop: "50px",
   },
   login_button: {
-    marginBottom: "50px",
+    marginBottom: "10px",
     color: "black",
     backgroundColor: "white",
+    "&:hover": {
+      backgroundColor: "gray",
+      color: "white",
+    },
+  },
+  guest_button: {
+    marginBottom: "50px",
+    color: "white",
+    border: "1px solid white",
+    backgroundColor: "transparent",
     "&:hover": {
       backgroundColor: "gray",
       color: "white",

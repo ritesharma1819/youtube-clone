@@ -12,8 +12,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const handleLogIn = () => {
-    dispatch(login());
+  const handleLogIn = (isGuest) => {
+    dispatch(login(isGuest));
   };
   useEffect(() => {
     if (accessToken) {
@@ -27,8 +27,11 @@ const Login = () => {
           YouTube-Clone
         </Typography>
         <Image src={youtubelogo} alt="logo" width="100px" height="100px" />
-        <Button onClick={handleLogIn} sx={style.login_button}>
+        <Button onClick={() => handleLogIn(false)} sx={style.login_button}>
           LogIn With Google
+        </Button>
+        <Button onClick={() => handleLogIn(true)} sx={style.guest_button}>
+          Continue as Guest
         </Button>
       </Box>
     </Box>
